@@ -31,7 +31,7 @@ _start:
 		cmp al,5Dh ; ]
 		je _right
 
-		cmp al,08h ; backspace
+		cmp ah,2bh ; backslash
 		je _back
 
 		cmp al,20h ; everything else except first 32 ASCII chars
