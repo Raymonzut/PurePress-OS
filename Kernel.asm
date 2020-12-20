@@ -31,6 +31,9 @@ _start:
 		cmp al,5Dh ; ]
 		je _right
 
+		cmp al,08h ; backspace
+		je _back
+
 		cmp al,20h ; everything else except first 32 ASCII chars
 		jge _print
 
@@ -54,13 +57,29 @@ _start:
 		je _up
 
 		jmp _loop
-	
+
 	_right:
 		add bl,1h
 
 		; Wrap cursor line down on reaching right border
 		cmp bl,41h
 		je _down
+
+		jmp _loop
+
+	_back:
+		cmp bl,2h
+		je _loop
+
+		sub bl,1h
+
+		mov ah,02h
+		mov dl,bl
+		int 10h
+
+		mov ah,0eh
+		mov al,0
+		int 10h
 
 		jmp _loop
 
