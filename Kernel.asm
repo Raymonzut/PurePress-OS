@@ -11,6 +11,9 @@ _start:
 	mov ah,0
 	int 10h
 
+	mov bl,2h
+	mov cl,0h
+
 	_loop:
 		mov ah,02h
 		mov dl,bl
