@@ -1,4 +1,6 @@
 Bootloader.asm
 
 *.iso
+*.bin
+*.flp
 run.sh
